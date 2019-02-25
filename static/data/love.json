@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "type":"love",
+  "data": [
+    {
+      "id": 1,
+      "title": "春色远走，风情长留",
+      "title_color": "FF5280",
+      "context_link": "1.txt",
+      "time": "2018/9/4",
+      "context_simple": "春色远走，风情长留。爱若放手，祝福依旧。"
+    },
+    {
+      "id": 2,
+      "title": "另一个测试文字",
+      "context_link": "2.txt",
+      "time": "",
+      "context_simple": "测试简介内容"
+    }
+  ]
+}

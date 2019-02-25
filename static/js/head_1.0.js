@@ -1,0 +1,27 @@
+
+document.writeln("<header>");
+document.writeln("  <div class=\'logo\'><a href=\'./index.html\'>自己的小空间</a></div>");
+document.writeln("  <nav>");
+document.writeln("    <ul id=\'starlist\'>");
+document.writeln("      ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./life.html\'>生活随笔</a></li> ");
+document.writeln(" ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./love.html\'>爱情文章</a></li> ");
+document.writeln(" ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./family.html\'>亲情文章</a></li> ");
+document.writeln(" ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./links.html\'>友情文章</a></li> ");
+document.writeln(" ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./psy.html\'>人生哲理</a></li> ");
+document.writeln(" ");
+document.writeln(" ");
+document.writeln("<li><a href=\'./essay.html\'>三字经</a></li> ");
+document.writeln(" ");
+document.writeln("    </ul>");
+document.writeln("  </nav>");
+document.writeln("</header>");

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.isplm.com/aq/1032.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>文章详情</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="那些以玩笑说出口的话，往往是最真的表达">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./static/index.css" rel="stylesheet">
+
+    <script src="static/js/baseFunc_1.0.js" type="text/javascript"></script>
+    <script src="./static/js/jquery.js" type="text/javascript"></script>
+    <script src="static/js/request_1.2.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script src="static/js/head_1.0.js" type="text/javascript" charset="utf-8"></script>
+
+<div class="box">
+    <div class="blank"></div>
+    <div class="infosbox">
+        <div class="newsview">
+            <h3 class="news_title">获取失败</h3>
+
+            <div class="bloginfo">
+                <ul>
+                    <li class="author"></li>
+                    <li class="lmname">获取失败</li>
+                    <li class="timer" id="timer">获取失败</li>
+                    <!--<li class="view">-->
+                    <!--<script src="./那些以玩笑说出口的话，往往是最真的表达_files/saved_resource"></script>-->
+                    <!--99已阅读-->
+                    <!--</li>-->
+                    <!--<li class="like">0</li>-->
+                </ul>
+            </div>
+            <div class="tags"></div>
+            <div class="news_about" id="simpletext"><strong>简介</strong>内容获取失败
+            </div>
+            <!-- 文章内容 -->
+            <div class="news_con">
+            </div>
+            <!--<p class="diggit"><a-->
+            <!--href="JavaScript:makeRequest(&#39;/e/public/digg/?classid=15&amp;id=1032&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum&#39;,&#39;EchoReturnedText&#39;,&#39;GET&#39;,&#39;&#39;);">-->
+            <!--很赞哦！ </a>(<b id="diggnum">-->
+            <!--<script type="text/javascript" src="./那些以玩笑说出口的话，往往是最真的表达_files/saved_resource(1)"></script>-->
+            <!--6</b>)-->
+            <!--</p>-->
+        </div>
+        <!-- 占位块 -->
+
+    </div>
+    <aside>
+        <div class="ztbox">
+
+        </div>
+
+        <div class="paihang">
+            <h2>点击排行</h2>
+            <ul>
+
+            </ul>
+        </div>
+        <div class="paihang">
+            <h2>站长推荐</h2>
+            <ul>
+
+            </ul>
+        </div>
+    </aside>
+</div>
+<div class="blank"></div>
+
+<script src="static/js/slider_1.2.5.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var id = getQueryString("id");
+    var type = getQueryString("type");
+    console.log(id);
+    console.log(type);
+    requestList(type, function (info, error) {
+        if (info != null) {
+            var data_list = info["data"];
+            for (var i = 0; i < data_list.length; i++) {
+                var tmp_value = data_list[i];
+                if (tmp_value["id"] != id)continue;
+                console.log("found id:" + id);
+                if (tmp_value["time"] != null)
+                    $("#timer").text(tmp_value["time"]);
+                if (tmp_value["context_simple"] != null)
+                    $("#simpletext").text(tmp_value["context_simple"]);
+                $(".news_title").text(tmp_value["title"]);
+                $("title").text(tmp_value["title"]);
+                var contextType = "";
+
+                if (type == "love") {
+                    contextType = "爱情文章";
+                } else if (type == "essay") {
+                    contextType = "生活随笔";
+                } else if (type == "family") {
+                    contextType = "亲情文章";
+                } else if (type == "life") {
+                    contextType = "人生哲理";
+                } else if (type == "links") {
+                    contextType = "友情文章";
+                } else if (type == "psy") {
+                    contextType = "三字经";
+                }
+                $(".lmname").text(contextType);
+            }
+        } else {
+            $(".news_title").text("内容获取失败，请刷新重试");
+        }
+    });
+    var requestfile = type + "/" + id + ".json";
+    requestText(requestfile, function (info, error) {
+        var div_blk = $(".news_con");
+        if (info != null) {
+            var arr_data = info.split('\n');
+            for (var i = 0; i < arr_data.length; i++) {
+                console.log(arr_data[i]);
+                var p_item = $("<p></p>").html("&nbsp;&nbsp;" + arr_data[i]);
+                div_blk.append(p_item);
+            }
+        } else {
+            var p_item = $("<p></p>").text("内容获取失败，请刷新重试");
+            div_blk.append(p_item);
+            console.log(error);
+        }
+    })
+
+</script>
+
+
+</body>
+</html>
